@@ -197,6 +197,8 @@ stdio.h
 -
 pico/stdlib.h
 /home/mfx/pico/pico-tests/button/pico/stdlib.h
+hardware/gpio.h
+/home/mfx/pico/pico-tests/button/hardware/gpio.h
 
 generated/pico_base/pico/config_autogen.h
 /home/mfx/pico/pico-sdk/src/boards/include/boards/pico.h

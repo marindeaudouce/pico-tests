@@ -5,12 +5,18 @@
  */
 #include <stdio.h>
 #include "pico/stdlib.h"
+#include "hardware/gpio.h"
+
+const uint BUTTON = 14;
+const uint LED = 19;
+
+void gpio_irqHandler(uint gpio, uint32_t events) {
+    gpio_xor_mask(1<<LED);
+    printf("Button pressed !\n");
+}
 
 int main() {
-
-    const uint BUTTON = 14;
-    const uint LED = 19;
-
+    
     stdio_init_all();
 
     gpio_init(BUTTON);
@@ -19,12 +25,9 @@ int main() {
 
     gpio_init(LED);
     gpio_set_dir(LED, GPIO_OUT);
+
+    gpio_set_irq_enabled_with_callback(BUTTON, GPIO_IRQ_EDGE_RISE, true, &gpio_irqHandler);
     
-    while (true) {
-        if(gpio_get(BUTTON)) {
-            gpio_xor_mask(1<<LED);
-            sleep_ms(250);
-        }
-    }
+    while (true);
 
 }
