@@ -24,6 +24,12 @@ add_subdirectory(traffic)
 # Add button exemple
 add_subdirectory(button)
 
+# Add temperature exemple
+add_subdirectory(temperature)
+
+# Add lcd exemple
+add_subdirectory(lcd_1602_i2c)
+
 add_compile_options(-Wall
         -Wno-format          # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int
         -Wno-unused-function # we have some for the docs that aren't called
